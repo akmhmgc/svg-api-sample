@@ -2,15 +2,22 @@ const getRandomInt = (max) => {
   return Math.floor(Math.random() * max);
 }
 
+const omikuji = () => {
+  const number = getRandomInt(10);
+  if (number <= 1) return "大凶";
+  if (number <= 2) return "凶";
+  if (number <= 6) return "吉";
+  if (number <= 9) return "中吉";
+  return "大吉";
+}
+
 const svg = () => {
   return `
           <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+          <rect x="0.5" y="0.5" width="200" height="200" fill="white"/>
           <style>
-            .header {
-              fill: red;
-              animation:center 1s 1;
-            }
             #fuuno {
+              fill: red;
               transform-origin: center;
               animation:omikuji 1s ease-in-out forwards;
               }
@@ -25,8 +32,8 @@ const svg = () => {
                 }
               }
               </style>
-            <text class="header" id="fuuno" x="100" y="100">
-              ${getRandomInt(100)}
+            <text class="header" id="fuuno" x="85" y="105">
+              ${omikuji()}
             </text>
           </svg>
           `;
